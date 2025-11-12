@@ -169,12 +169,12 @@ export default function CanonicalTag(props) {
                     const overrideCanonical = canonicalOverrides[currentLocalePath];
                     if (overrideCanonical) {
                         return (
-                            <link rel="canonical" href={`https://uat.sedarglobal.com/${overrideCanonical}`} />
+                            <link test={currentLocalePath} rel="canonical" href={`https://uat.sedarglobal.com/${overrideCanonical}`} />
                         );
                     }
 
                     return props.pagetype == 'PRODUCT' && !cleanPath.includes('curtains-and-drapes') ? (
-                        <link rel="canonical" href={`https://uat.sedarglobal.com/${locale != "default" ? locale : ''}${route != '/' ? `/product${cleanPath.split("/")[1]}` : ''}`} />
+                        <link test={currentLocalePath} rel="canonical" href={`https://uat.sedarglobal.com/${locale != "default" ? locale : ''}${route != '/' ? `/product${cleanPath.split("/")[1]}` : ''}`} />
                     ) : (
                         <>
                         {/* <link data-type={props.pagetype} data-path={cleanPath} rel="canonical" href={`https://uat.sedarglobal.com/${locale != "default" ? locale : ''}${route !== '/' ? '/' + cleanPath.split("/").slice(2).join("/") : ''}`} /> */}
@@ -188,6 +188,7 @@ export default function CanonicalTag(props) {
                             const cleaned = cleanPath.replace(localePrefixRegex, '').replace(/^\/+/, '');
                             return (
                         <link
+                            test={currentLocalePath}
                             rel="canonical"
                             href={`https://uat.sedarglobal.com/${locale !== "default" ? `${locale}/` : ''}${cleaned}`}
                         />
