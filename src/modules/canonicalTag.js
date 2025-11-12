@@ -164,8 +164,8 @@ export default function CanonicalTag(props) {
                         'egy-en/curtains-and-blinds': 'egy-en/blinds-shades',
                         'global-en/curtains-and-blinds': 'global-en/blinds-shades',
                     };
-                    const currentLocalePath = `${locale != "default" ? locale : ''}/${cleanPath.split("/")[2] || ''}`.replace(/^\/+/, '');
-
+                    // const currentLocalePath = `${locale != "default" ? locale : ''}/${cleanPath.split("/")[2] || ''}`.replace(/^\/+/, '');
+                    const currentLocalePath = `${locale != "default" ? locale : ''}${asPath}`;
                     const overrideCanonical = canonicalOverrides[currentLocalePath];
                     if (overrideCanonical) {
                         return (
